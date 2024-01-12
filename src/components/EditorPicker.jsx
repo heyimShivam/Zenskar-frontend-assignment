@@ -18,7 +18,7 @@ const EditorComponentsPicker = (props) => {
         <div className="editor-picker-components-list">
           {ComponentListItems.map((ComponentListItem) => {
             return (
-              <div className="editor-picker-component-item">
+              <div className="editor-picker-component-item" key={ComponentListItem.id}>
                 <div className="image">
                   <img
                     src={ComponentListItem.image}
