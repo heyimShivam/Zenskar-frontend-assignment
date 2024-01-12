@@ -11,7 +11,7 @@ const EditorCanvas = (props) => {
         <FontAwesomeIcon icon={faBars} />
         <span className="editor-canvas-nav-title">
           Design Board
-          <span className="editor-canvas-nav-draft-text">(Draft)</span>
+          <span className="editor-canvas-nav-draft-text" style={{paddingLeft: '5px'}}>(Draft)</span>
         </span>
       </div>
       <div className="editor-canvas-container">
