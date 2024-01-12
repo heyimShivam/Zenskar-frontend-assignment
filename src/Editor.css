@@ -3,13 +3,3 @@
   height: 100%;
   display: flex;
 }
-
-.editor-canvas {
-  width: calc(100% - 250px);
-}
-
-.editor-picker {
-  padding: 25px;
-  width: 250px;
-  border-left: 1px solid black;
-}
