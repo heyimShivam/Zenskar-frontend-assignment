@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faPlay, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { ComponentListItems } from "../data/ComponentListItems";
 
 import "./EditorPicker.css";
-import { useState } from "react";
 
 const EditorComponentsPicker = (props) => {
   const [searchBarInput, setSearchBarInput] = useState("");
