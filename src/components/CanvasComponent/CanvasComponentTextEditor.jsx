@@ -1,30 +1,39 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import Draggable from "react-draggable";
+import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import Draggable from "react-draggable";
+
+import { updateComponentPosition } from "../../data/canvasComponentSlice";
+import { showDots, hideDots } from "../../data/canvasBackgroundSlice";
 
 import "./CanvasComponentTextEditor.css";
 
-const CanvasComponentTextEditor = ({properties}) => {
+const CanvasComponentTextEditor = ({ properties, componentIndex }) => {
+  const nodeRef = React.useRef(null);
   const [showEditInput, setShowEditInput] = useState(0);
   const [inputText, setInputText] = useState(properties.name);
+  const dispatch = useDispatch();
+  const showDotsBackground = useSelector(
+    (store) => store.canvasBackground.showDotsBackground
+  );
 
   function updateInputText(event) {
     setInputText(event.target.value);
   }
 
-  function handleStart(event) {
-    // console.log(event);
-    // setShowDotInCanvas(true);
+  function handleStart(event, dragElement) {
+    dispatch(showDots());
   }
 
-  function handleOnDrag(event) {
-    // console.log(event);
-  }
-
-  function handleStop(event) {
-    // console.log(event);
-    // setShowDotInCanvas(false);
+  function handleStop(event, dragElement) {
+    dispatch(
+      updateComponentPosition({
+        componentIndex: componentIndex,
+        dragableDefaultPosition: { x: dragElement.x, y: dragElement.y },
+      })
+    );
+    dispatch(hideDots());
   }
 
   function handleTextInputClick() {
@@ -37,16 +46,19 @@ const CanvasComponentTextEditor = ({properties}) => {
   }
 
   return (
+    //  If running in React Strict mode, ReactDOM.findDOMNode() is deprecated.
+    //  Unfortunately, in order for <Draggable> to work properly, we need raw access
+    //  to the underlying DOM node. If you want to avoid the warning, pass a `nodeRef`.
     <Draggable
       defaultPosition={properties.dragableDefaultPosition}
       position={properties.dragablePosition}
       grid={properties.dragableGrid}
-      onDrag={handleOnDrag}
       onStart={handleStart}
       onStop={handleStop}
       handle="strong"
+      nodeRef={nodeRef}
     >
-      <div className="canvas-text-editor-block ">
+      <div className="canvas-text-editor-block" ref={nodeRef}>
         {showEditInput ? (
           <>
             <div className="canvas-text-editor-block-edit">

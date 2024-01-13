@@ -22,5 +22,5 @@ export const ComponentListItems = [
     name: "Table",
     image: "/icon/cells.png",
     description: "Display tabular data with pagination.",
-  }
+  },
 ];

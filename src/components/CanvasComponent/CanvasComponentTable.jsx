@@ -1,33 +1,43 @@
 import Draggable from "react-draggable";
+import React from "react";
+import { useDispatch } from "react-redux";
+
+import { updateComponentPosition } from "../../data/canvasComponentSlice";
+import { showDots, hideDots } from "../../data/canvasBackgroundSlice";
 
 import "./CanvasComponentTable.css";
 
-const CanvasComponentTable = ({ properties }) => {
-  function handleStart(event) {
-    // console.log(event);
-    // setShowDotInCanvas(true);
+const CanvasComponentTable = ({ properties, componentIndex }) => {
+  const nodeRef = React.useRef(null);
+  const dispatch = useDispatch();
+
+  function handleStart(event, dragElement) {
+    dispatch(showDots());
   }
 
-  function handleOnDrag(event) {
-    // console.log(event);
-  }
-
-  function handleStop(event) {
-    // console.log(event);
-    // setShowDotInCanvas(false);
+  function handleStop(event, dragElement) {
+    dispatch(
+      updateComponentPosition({
+        componentIndex: componentIndex,
+        dragableDefaultPosition: { x: dragElement.x, y: dragElement.y },
+      })
+    );
+    dispatch(hideDots());
   }
 
   return (
+    //  If running in React Strict mode, ReactDOM.findDOMNode() is deprecated.
+    //  Unfortunately, in order for <Draggable> to work properly, we need raw access
+    //  to the underlying DOM node. If you want to avoid the warning, pass a `nodeRef`.
     <Draggable
       defaultPosition={properties.dragableDefaultPosition}
       position={properties.dragablePosition}
       grid={properties.dragableGrid}
-      onDrag={handleOnDrag}
       onStart={handleStart}
       onStop={handleStop}
-      // handle="strong"
+      nodeRef={nodeRef}
     >
-      <div className="canvas-table">
+      <div className="canvas-table" ref={nodeRef}>
         <table>
           <thead>
             <tr>

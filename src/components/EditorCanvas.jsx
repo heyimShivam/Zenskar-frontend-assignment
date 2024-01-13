@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import EditorCanvasBoard from "./EditorCanvasBoard";
 
 import "./EditorCanvas.css";
@@ -11,7 +12,12 @@ const EditorCanvas = (props) => {
         <FontAwesomeIcon icon={faBars} />
         <span className="editor-canvas-nav-title">
           Design Board
-          <span className="editor-canvas-nav-draft-text" style={{paddingLeft: '5px'}}>(Draft)</span>
+          <span
+            className="editor-canvas-nav-draft-text"
+            style={{ paddingLeft: "5px" }}
+          >
+            (Draft)
+          </span>
         </span>
       </div>
       <div className="editor-canvas-container">

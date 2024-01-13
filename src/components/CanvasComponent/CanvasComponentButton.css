@@ -1,14 +1,13 @@
 .canvas-btn {
   position: absolute;
-  top:10px;
-  left:10px;
+  top: 10px;
+  left: 10px;
   text-decoration: none;
   height: 30px;
   width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid royalblue;
   background-color: royalblue;
   color: white;
   font-weight: 800;

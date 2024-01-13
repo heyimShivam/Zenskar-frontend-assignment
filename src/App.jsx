@@ -1,13 +1,18 @@
 import React from "react";
-import "./App.css";
+import { Provider } from "react-redux";
 
 import Editor from "./Editor";
+import store from "./data/store";
+
+import "./App.css";
 
 const App = () => {
   return (
-    <div className="App">
-      <Editor />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Editor />
+      </div>
+    </Provider>
   );
 };
 
