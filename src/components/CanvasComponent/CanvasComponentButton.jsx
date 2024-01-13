@@ -2,7 +2,7 @@ import Draggable from "react-draggable";
 
 import "./CanvasComponentButton.css";
 
-const CanvasComponentButton = (props) => {
+const CanvasComponentButton = ({properties}) => {
   function handleStart(event) {
     // console.log(event);
     // setShowDotInCanvas(true);
@@ -19,14 +19,14 @@ const CanvasComponentButton = (props) => {
 
   return (
     <Draggable
-      defaultPosition={{ x: 0, y: 0 }}
-      position={null}
-      grid={[25, 25]}
+      defaultPosition={properties.dragableDefaultPosition}
+      position={properties.dragablePosition}
+      grid={properties.dragableGrid}
       onDrag={handleOnDrag}
       onStart={handleStart}
       onStop={handleStop}
     >
-      <div className="canvas-btn">Button</div>
+      <div className="canvas-btn" href={properties.url}>{properties.value}</div>
     </Draggable>
   );
 };

@@ -2,7 +2,7 @@ import Draggable from "react-draggable";
 
 import "./CanvasComponentTable.css";
 
-const CanvasComponentTable = (props) => {
+const CanvasComponentTable = ({ properties }) => {
   function handleStart(event) {
     // console.log(event);
     // setShowDotInCanvas(true);
@@ -19,9 +19,9 @@ const CanvasComponentTable = (props) => {
 
   return (
     <Draggable
-      defaultPosition={{ x: 0, y: 0 }}
-      position={null}
-      grid={[25, 25]}
+      defaultPosition={properties.dragableDefaultPosition}
+      position={properties.dragablePosition}
+      grid={properties.dragableGrid}
       onDrag={handleOnDrag}
       onStart={handleStart}
       onStop={handleStop}
@@ -30,25 +30,19 @@ const CanvasComponentTable = (props) => {
       <div className="canvas-table">
         <table>
           <tr>
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
+            {properties.tableHeading.map((value) => {
+              return <th>{value}</th>;
+            })}
           </tr>
-          <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-          </tr>
-          <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-          </tr>
-          <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-          </tr>
+          {properties.tableRow.map((value) => {
+            return (
+              <tr>
+                {value.map((td) => {
+                  return <td>{td}</td>;
+                })}
+              </tr>
+            );
+          })}
         </table>
       </div>
     </Draggable>

@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Draggable from "react-draggable";
+
 import CanvasComponentTextEditor from "./CanvasComponent/CanvasComponentTextEditor";
 import CanvasComponentButton from "./CanvasComponent/CanvasComponentButton";
-
-import "./EditorCanvasBoard.css";
 import CanvasComponentTable from "./CanvasComponent/CanvasComponentTable";
 import CanvasComponentDropDown from "./CanvasComponent/CanvasComponentDropDown";
+import { canvasBoardComponentData } from "../data/canvasBoardComponentData";
+
+import "./EditorCanvasBoard.css";
 
 const EditorCanvasBoard = (props) => {
   const [showDotInCanvas, setShowDotInCanvas] = useState(false);
@@ -32,7 +34,7 @@ const EditorCanvasBoard = (props) => {
           Drag & drop components here.
         </p> */}
         <div className="editor-canvas-foreground" style={{ padding: "10px" }}>
-          <Draggable
+          {/* <Draggable
             defaultPosition={{ x: 0, y: 0 }}
             position={null}
             grid={[25, 25]}
@@ -41,11 +43,20 @@ const EditorCanvasBoard = (props) => {
             onStop={handleStop}
           >
             <div className="canvas-dragable-block">Drag from here 1</div>
-          </Draggable>
-          <CanvasComponentTextEditor />
-          <CanvasComponentButton />
-          <CanvasComponentTable />
-          <CanvasComponentDropDown />
+          </Draggable> */}
+
+          {canvasBoardComponentData.map((value) => {
+            if (value.id === "textInput") {
+              return <CanvasComponentTextEditor properties={value} />;
+            } else if (value.id === "button") {
+              return <CanvasComponentButton properties={value} />;
+            } else if (value.id === "dropdown") {
+              return <CanvasComponentDropDown properties={value} />;
+            } else if (value.id === "table") {
+              return <CanvasComponentTable properties={value} />;
+            }
+            return <></>;
+          })}
         </div>
       </div>
     </>

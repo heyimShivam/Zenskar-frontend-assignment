@@ -1,9 +1,13 @@
 .canvas-drag-dropdown {
+  position: absolute;
+  top:14px;
+  left:10px;
   width: fit-content;
   height: fit-content;
-  margin-top: 6px;
+  margin-top: -3px;
   margin-left: 2px;
 }
+
 .canvas-drag-dropdown select {
   width: 250px;
   height: 26px;

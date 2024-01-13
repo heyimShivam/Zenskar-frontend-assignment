@@ -5,9 +5,9 @@ import Draggable from "react-draggable";
 
 import "./CanvasComponentTextEditor.css";
 
-const CanvasComponentTextEditor = (props) => {
+const CanvasComponentTextEditor = ({properties}) => {
   const [showEditInput, setShowEditInput] = useState(0);
-  const [inputText, setInputText] = useState("Text Input");
+  const [inputText, setInputText] = useState(properties.name);
 
   function updateInputText(event) {
     setInputText(event.target.value);
@@ -38,9 +38,9 @@ const CanvasComponentTextEditor = (props) => {
 
   return (
     <Draggable
-      defaultPosition={{ x: 0, y: 0 }}
-      position={null}
-      grid={[25, 25]}
+      defaultPosition={properties.dragableDefaultPosition}
+      position={properties.dragablePosition}
+      grid={properties.dragableGrid}
       onDrag={handleOnDrag}
       onStart={handleStart}
       onStop={handleStop}
