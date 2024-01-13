@@ -45,15 +45,15 @@ const EditorCanvasBoard = (props) => {
             <div className="canvas-dragable-block">Drag from here 1</div>
           </Draggable> */}
 
-          {canvasBoardComponentData.map((value) => {
+          {canvasBoardComponentData.map((value, index) => {
             if (value.id === "textInput") {
-              return <CanvasComponentTextEditor properties={value} />;
+              return <CanvasComponentTextEditor key={index} properties={value} />;
             } else if (value.id === "button") {
-              return <CanvasComponentButton properties={value} />;
+              return <CanvasComponentButton key={index} properties={value} />;
             } else if (value.id === "dropdown") {
-              return <CanvasComponentDropDown properties={value} />;
+              return <CanvasComponentDropDown key={index} properties={value} />;
             } else if (value.id === "table") {
-              return <CanvasComponentTable properties={value} />;
+              return <CanvasComponentTable key={index} properties={value} />;
             }
             return <></>;
           })}

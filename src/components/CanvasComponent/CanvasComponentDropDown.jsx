@@ -29,7 +29,7 @@ const CanvasComponentDropDown = ({ properties }) => {
       <div className="canvas-drag-dropdown">
         <select>
           {properties.options.map((optionItem) => {
-            return <option value={optionItem.value}>{optionItem.text}</option>;
+            return <option key={optionItem.value} value={optionItem.value}>{optionItem.text}</option>;
           })}
         </select>
       </div>

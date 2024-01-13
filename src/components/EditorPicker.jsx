@@ -1,24 +1,48 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faPlay, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-
-import { ComponentListItems } from "./ComponentListItems";
+import { ComponentListItems } from "../data/ComponentListItems";
 
 import "./EditorPicker.css";
+import { useState } from "react";
 
 const EditorComponentsPicker = (props) => {
+  const [searchBarInput, setSearchBarInput] = useState("");
+  const [filteredComponentListItems, setFilteredComponentListItems] = useState(ComponentListItems);
+
+  function selectComponent(componentId) {
+    console.log(componentId);
+  }
+
+  function searchbarValueUpdated(event) {
+    const eventValue = event.target.value;
+    setSearchBarInput(eventValue);
+    
+    if(eventValue === "") {
+      setFilteredComponentListItems(ComponentListItems);
+      return;
+    }
+
+    setFilteredComponentListItems(ComponentListItems.filter(ComponentListItem => {
+      if((ComponentListItem.name.toLowerCase()).includes(eventValue.toLowerCase())) {
+        return true;
+      }
+      return false;
+    }));
+  }
+
   return (
     <>
       <div className="editor-picker-components-searchBar">
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-        <input type="text" placeholder="Search Components" />
+        <input type="text" placeholder="Search Components" value={searchBarInput} onChange={searchbarValueUpdated}/>
       </div>
 
       <div className="editor-picker-components">
         <p className="editor-picker-components-title">Components</p>
         <div className="editor-picker-components-list">
-          {ComponentListItems.map((ComponentListItem) => {
+          {filteredComponentListItems.map((ComponentListItem) => {
             return (
-              <div className="editor-picker-component-item" key={ComponentListItem.id}>
+              <div className="editor-picker-component-item" key={ComponentListItem.id} onClick={() => {selectComponent(ComponentListItem.id)}}>
                 <div className="image">
                   <img
                     src={ComponentListItem.image}

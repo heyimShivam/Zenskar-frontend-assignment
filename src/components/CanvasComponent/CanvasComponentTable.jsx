@@ -29,20 +29,24 @@ const CanvasComponentTable = ({ properties }) => {
     >
       <div className="canvas-table">
         <table>
-          <tr>
-            {properties.tableHeading.map((value) => {
-              return <th>{value}</th>;
+          <thead>
+            <tr>
+              {properties.tableHeading.map((value, index) => {
+                return <th key={index}>{value}</th>;
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {properties.tableRow.map((value, index) => {
+              return (
+                <tr key={index}>
+                  {value.map((td, index) => {
+                    return <td key={index}>{td}</td>;
+                  })}
+                </tr>
+              );
             })}
-          </tr>
-          {properties.tableRow.map((value) => {
-            return (
-              <tr>
-                {value.map((td) => {
-                  return <td>{td}</td>;
-                })}
-              </tr>
-            );
-          })}
+          </tbody>
         </table>
       </div>
     </Draggable>

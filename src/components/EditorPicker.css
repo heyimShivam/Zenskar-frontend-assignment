@@ -4,6 +4,13 @@
   box-shadow: 1px 1px 1px #00000029;
 }
 
+@media (width <= 600px) {
+  .editor-picker {
+    width: 100vw;
+    height: 60vh;
+  }
+}
+
 .editor-picker-preview-zoom {
   height: 64px;
   text-align: right;
@@ -94,9 +101,16 @@
   justify-content: center;
   align-items: center;
   display: flex;
-  padding: 20px 0px;
+  padding: 20px 24px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.2);
-  margin: 0px 24px;
+}
+
+.editor-picker-component-item:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.editor-picker-component-item:active {
+  background-color: rgba(128, 128, 128, 0.5);
 }
 
 .editor-picker-component-item .image {
