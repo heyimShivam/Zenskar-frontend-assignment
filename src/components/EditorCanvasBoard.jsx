@@ -29,22 +29,10 @@ const EditorCanvasBoard = (props) => {
   return (
     <>
       <div className="main-container">
-        {/* showDotInCanvas */}
-        {/* <p className="editor-canvas-center-text">
+        <p className="editor-canvas-center-text">
           Drag & drop components here.
-        </p> */}
+        </p>
         <div className="editor-canvas-foreground" style={{ padding: "10px" }}>
-          {/* <Draggable
-            defaultPosition={{ x: 0, y: 0 }}
-            position={null}
-            grid={[25, 25]}
-            onDrag={handleOnDrag}
-            onStart={handleStart}
-            onStop={handleStop}
-          >
-            <div className="canvas-dragable-block">Drag from here 1</div>
-          </Draggable> */}
-
           {canvasBoardComponentData.map((value, index) => {
             if (value.id === "textInput") {
               return <CanvasComponentTextEditor key={index} properties={value} />;
