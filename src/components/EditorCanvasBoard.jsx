@@ -1,26 +1,52 @@
-import "./EditorCanvasBoard.css";
+import { useState } from "react";
+import Draggable from "react-draggable";
+import CanvasComponentTextEditor from "./CanvasComponent/CanvasComponentTextEditor";
+import CanvasComponentButton from "./CanvasComponent/CanvasComponentButton";
 
-const CanvasBackgroundSquares = ({ index }) => {
-  return (
-    <div key={index} className="editor-canvas-background-squares">
-      <div class="lefttop dot"></div>
-      <div class="righttop dot"></div>
-    </div>
-  );
-};
+import "./EditorCanvasBoard.css";
+import CanvasComponentTable from "./CanvasComponent/CanvasComponentTable";
+import CanvasComponentDropDown from "./CanvasComponent/CanvasComponentDropDown";
 
 const EditorCanvasBoard = (props) => {
+  const [showDotInCanvas, setShowDotInCanvas] = useState(false);
+
+  function handleStart(event) {
+    // console.log(event);
+    setShowDotInCanvas(true);
+  }
+
+  function handleOnDrag(event) {
+    // console.log(event);
+  }
+
+  function handleStop(event) {
+    // console.log(event);
+    setShowDotInCanvas(false);
+  }
+
   return (
     <>
       <div className="main-container">
-        <div className="editor-canvas-background" style={{padding: '10px'}}>
-          {Array(1829)
-            .fill(1)
-            .map((_, index) => {
-              return <CanvasBackgroundSquares index={index} />;
-            })}
+        {/* showDotInCanvas */}
+        {/* <p className="editor-canvas-center-text">
+          Drag & drop components here.
+        </p> */}
+        <div className="editor-canvas-foreground" style={{ padding: "10px" }}>
+          <Draggable
+            defaultPosition={{ x: 0, y: 0 }}
+            position={null}
+            grid={[25, 25]}
+            onDrag={handleOnDrag}
+            onStart={handleStart}
+            onStop={handleStop}
+          >
+            <div className="canvas-dragable-block">Drag from here 1</div>
+          </Draggable>
+          <CanvasComponentTextEditor />
+          <CanvasComponentButton />
+          <CanvasComponentTable />
+          <CanvasComponentDropDown />
         </div>
-        <p className="editor-canvas-center-text">Drag & drop components here.</p>
       </div>
     </>
   );

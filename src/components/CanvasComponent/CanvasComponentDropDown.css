@@ -1,0 +1,14 @@
+.canvas-drag-dropdown {
+  width: fit-content;
+  height: fit-content;
+  margin-top: 6px;
+  margin-left: 2px;
+}
+.canvas-drag-dropdown select {
+  width: 250px;
+  height: 26px;
+  outline: none;
+  border: 1px solid gray;
+  background-color: white;
+  color: #0f0f0f;
+}

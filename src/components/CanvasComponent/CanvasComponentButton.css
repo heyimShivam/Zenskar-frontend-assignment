@@ -1,0 +1,14 @@
+.canvas-btn {
+  height: 30px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid royalblue;
+  background-color: royalblue;
+  color: white;
+  font-weight: 800;
+  border-radius: 3px;
+  margin-top: 1px;
+  margin-left: 3px;
+}

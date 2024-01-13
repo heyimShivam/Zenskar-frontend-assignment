@@ -1,0 +1,49 @@
+.canvas-text-editor-block {
+  width: fit-content;
+  height: 25px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas-text-editor-block input {
+  width: fit-content;
+  outline: none;
+  border: none;
+}
+
+.canvas-text-editor-block .text-editor {
+  text-align: left;
+}
+
+.canvas-text-editor-block-edit {
+  background-color: white;
+  padding: 5px 12px;
+  border-radius: 5px;
+}
+
+.canvas-drag-drop {
+  padding-left: 8px;
+  width: 11px;
+}
+
+.cursor {
+  cursor: move;
+}
+
+.container {
+  display: flex;
+}
+
+.container .hover-target {
+  display: none;
+}
+
+.container .hover-trigger:hover + .hover-target {
+  display: block;
+}
+
+.hover-target:hover {
+  display: block;
+}
