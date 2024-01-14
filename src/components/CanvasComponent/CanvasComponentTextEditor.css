@@ -23,6 +23,14 @@
   border-radius: 5px;
 }
 
+.btn-done {
+  border: 0px;
+  color: royalblue;
+  text-transform: capitalize;
+  font-weight: 500;
+  background-color: white;
+}
+
 .canvas-drag-drop {
   padding-left: 8px;
   width: 11px;

@@ -68,7 +68,7 @@ const CanvasComponentTextEditor = ({ properties, componentIndex }) => {
                 value={inputText}
                 placeholder="Text Input"
               />
-              <button onClick={handleTextInputClick}>done</button>
+              <button className="btn-done" onClick={handleTextInputClick}>done</button>
             </div>
             <strong className="cursor">
               <FontAwesomeIcon icon={faBars} className="canvas-drag-drop" />
