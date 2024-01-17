@@ -7,7 +7,7 @@
 @media (width <= 600px) {
   .editor-picker {
     width: 100vw;
-    height: 60vh;
+    height: auto;
   }
 }
 
@@ -64,7 +64,7 @@
 }
 
 .editor-picker-components {
-  padding: 25px 0px;
+  padding-top: 25px;
 }
 
 .editor-picker-components-title {
@@ -75,7 +75,7 @@
 }
 
 .editor-picker-components-list {
-  max-height: calc(100vh - 200px);
+  max-height: calc(100vh - 210px);
   overflow-y: scroll;
   margin-right: 5px;
 }
@@ -162,7 +162,7 @@
   background: white;
   margin-top: 5px;
   width: 50px;
-  .volume {
-    -webkit-appearance: slider-vertical;
-  }
+}
+.volume {
+  -webkit-appearance: slider-vertical;
 }
